@@ -18,6 +18,7 @@ class Meme {
 
    let image = document.createElement('img')
    image.id = 'meme-image'
+   image.className = 'meme-img'
    image.src = this.image.url
 
    let input1 = document.createElement('h2')
@@ -36,16 +37,25 @@ class Meme {
    deleteBtn.id = `delete-${this.id}`
    deleteBtn.innerText = 'Delete Meme'
 
-   let imageDiv = document.querySelector('#image-container')
    let memeDiv = document.querySelector('#meme-container')
 
-   imageDiv.appendChild(name)
+   let imageDiv = document.createElement('div')
+   imageDiv.id = "image-container"
+   // imageDiv.style.backgroundImage = `url(${this.image.url})`
+
+   let cardDiv = document.createElement('div')
+   cardDiv.id = "card-container"
+   cardDiv.className = "card"
+
+   cardDiv.appendChild(imageDiv)
+   cardDiv.appendChild(name)
+   cardDiv.appendChild(editBtn)
+   cardDiv.appendChild(deleteBtn)
+
    imageDiv.appendChild(image)
    imageDiv.appendChild(input1)
    imageDiv.appendChild(input2)
-   imageDiv.appendChild(editBtn)
-   imageDiv.appendChild(deleteBtn)
-   memeDiv.appendChild(imageDiv)
+   memeDiv.appendChild(cardDiv)
   }
 }
 //
