@@ -11,26 +11,34 @@ class Meme {
     Meme.all.push(this)
   }
 
-Meme.all = []
+  renderMeme() {
+   let name = document.createElement('div')
+   name.id = "meme-name"
+   name.innerText = this.name
 
-renderMeme() {
-  let name = document.querySelector('#meme-name')
-  name.innerText = this.name
+   let image = document.createElement('img')
+   image.id = 'meme-image'
+   image.src = this.image.url
 
-  let image = document.querySelector('#meme-image')
-  image.src = this.image.url
+   let input1 = document.createElement('h2')
+   input1.id = 'top-center'
+   input1.innerText = this.input1
 
-  let input1 = document.querySelector('#top-center')
-  input1.innerText = this.input1
+   let input2 = document.createElement('h2')
+   input2.id = 'bottom-center'
+   input2.innerText = this.input2
 
-  let input2 = document.querySelector('#bottom-center')
-  input2.innerText = this.input2
+   let imageDiv = document.querySelector('#image-container')
+   let memeDiv = document.querySelector('#meme-container')
 
-
+   memeDiv.appendChild(name)
+   imageDiv.appendChild(image)
+   imageDiv.appendChild(input1)
+   imageDiv.appendChild(input2)
   }
-
 }
-
-let newMeme = new Meme(1, "newmeme", "cool meme", "happy meme", {}, {url: 'www.cool.com'})
-console.log(newMeme)
-renderMeme()
+//
+Meme.all = []
+// let newMeme = new Meme(1, "newmeme", "cool meme", "happy meme", {}, {url: 'www.cool.com'})
+// console.log(newMeme)
+// renderMeme()

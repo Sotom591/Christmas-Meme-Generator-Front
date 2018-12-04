@@ -12,6 +12,9 @@ class Mp3 {
     })
 
     Mp3.all.push(this)
+  }
 }
-
+//
 Mp3.all = []
+//
+// }

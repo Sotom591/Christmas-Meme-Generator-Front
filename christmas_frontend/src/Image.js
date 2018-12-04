@@ -13,5 +13,8 @@ class Image {
 
   Image.all.push(this)
 }
+}
 
 Image.all = []
+//
+// }
