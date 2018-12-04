@@ -28,13 +28,24 @@ class Meme {
    input2.id = 'bottom-center'
    input2.innerText = this.input2
 
+   let editBtn = document.createElement('button')
+   editBtn.id = `edit-${this.id}`
+   editBtn.innerText = 'Edit Meme'
+
+   let deleteBtn = document.createElement('button')
+   deleteBtn.id = `delete-${this.id}`
+   deleteBtn.innerText = 'Delete Meme'
+
    let imageDiv = document.querySelector('#image-container')
    let memeDiv = document.querySelector('#meme-container')
 
-   memeDiv.appendChild(name)
+   imageDiv.appendChild(name)
    imageDiv.appendChild(image)
    imageDiv.appendChild(input1)
    imageDiv.appendChild(input2)
+   imageDiv.appendChild(editBtn)
+   imageDiv.appendChild(deleteBtn)
+   memeDiv.appendChild(imageDiv)
   }
 }
 //
