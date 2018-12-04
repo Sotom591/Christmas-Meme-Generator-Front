@@ -32,10 +32,14 @@ class Meme {
    let editBtn = document.createElement('button')
    editBtn.id = `edit-${this.id}`
    editBtn.innerText = 'Edit Meme'
+   editBtn.addEventListener("click", editMeme)
+
 
    let deleteBtn = document.createElement('button')
    deleteBtn.id = `delete-${this.id}`
    deleteBtn.innerText = 'Delete Meme'
+   deleteBtn.addEventListener("click", deleteMeme)
+
 
    let memeDiv = document.querySelector('#meme-container')
 
@@ -57,6 +61,11 @@ class Meme {
    imageDiv.appendChild(input2)
    memeDiv.appendChild(cardDiv)
   }
+
+  
+
+
+
 }
 //
 Meme.all = []

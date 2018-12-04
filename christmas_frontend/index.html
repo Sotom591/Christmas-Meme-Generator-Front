@@ -14,8 +14,29 @@
     <h1>Christmas Meme Generator</h1>
 
     <div id="meme-container">
-  
 
     </div>
+
+    <form class="add-meme-form" style="">
+      <h3>Make a meme!</h3>
+      <div class="MakeMeme">
+        <div class="dropdown">
+  <button onclick="dropDown()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+        <input type="text" name="name" value="" placeholder="Enter a meme's name..." class="input-text">
+        <br>
+        <input type="text" name="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
+        <br>
+        <input type="text" name="buttom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
+        <br>
+        <input type="submit" name="submit" value="Make New Meme" class="submit">
+      </div>
+
+    </form>
   </body>
 </html>

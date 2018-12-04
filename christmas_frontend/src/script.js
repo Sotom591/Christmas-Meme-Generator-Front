@@ -14,8 +14,30 @@ function fetchMemes() {
       })
   )}
 
-//
-//   data.forEach(meme => renderMeme(meme))
-// )}
-//
-// function
+function editMeme(e){
+      console.log(e.currentTarget.id)
+}
+
+function deleteMeme(e){
+    console.log(e.currentTarget.id)
+}
+
+function dropDown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(e) {
+  e.preventDefault()
+  if (!e.target.matches('.dropbtn')) {
+
+    let dropdowns = document.getElementsByClassName("dropdown-content");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
