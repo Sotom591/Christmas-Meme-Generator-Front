@@ -4,7 +4,8 @@ class Mp3 {
     this.id = id,
     this.title = title,
     this.artist = artist,
-    this.audio = audio
+    this.audio = audio,
+    this.memes = []
 
     memes.forEach(meme => {
       this.memes.push(new Meme(meme.name, meme.input1, meme.input2))
