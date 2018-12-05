@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('loaded')
   fetchMemes()
+  songDropEvents()
+  imgDropEvents()
 })
 
 function getSongDropDown(){
@@ -55,24 +57,35 @@ window.onclick = function(e) {
 }
 
 function songDropEvents(){
-  songChoice = getSongDropDown().value;
-  alert("You choice" + songChoice)
-  // debugger
-  // let songOne = getSongDropDown().querySelector("#mp3-1")
-  //
-  // songOne.addEventListener("change", function(){
-  //   console.log("clicked song 1")
-  // })
-  //
-  // let songTwo = getSongDropDown().querySelector("#mp3-2")
-  //
-  // songTwo.addEventListener("click", function(){
-  //     console.log("clicked song 2")
-  //   })
-  //
-  // let songThree = getSongDropDown().querySelector("#mp3-3")
-  //
-  // songThree.addEventListener("click", function(){
-  //       console.log("clicked song 3")
-  //     })
+  let songOne = getSongDropDown().querySelector("#mp3-1")
+  songOne.addEventListener("click", function(){
+    console.log("clicked song 1")
+  })
+
+  let songTwo = getSongDropDown().querySelector("#mp3-2")
+  songTwo.addEventListener("click", function(){
+      console.log("clicked song 2")
+    })
+
+  let songThree = getSongDropDown().querySelector("#mp3-3")
+  songThree.addEventListener("click", function(){
+        console.log("clicked song 3")
+      })
   }
+
+  function imgDropEvents(){
+    let imgOne = getImgDropDown().querySelector("#img-1")
+    imgOne.addEventListener("click", function(){
+      console.log("clicked img 1")
+    })
+
+    let imgTwo = getImgDropDown().querySelector("#img-2")
+    imgTwo.addEventListener("click", function(){
+        console.log("clicked img 2")
+      })
+
+    let imgThree = getImgDropDown().querySelector("#img-3")
+    imgThree.addEventListener("click", function(){
+          console.log("clicked img 3")
+        })
+    }
