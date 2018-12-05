@@ -41,68 +41,9 @@ function preferedImg(){
       alert("You prefer the image " + prefer);
 }
 
+function makeAMemeInputs(){
 
-
-
-// function songDropDown() {
-//     document.getElementById("songDrop").classList.toggle("show");
-// }
-//
-// function imgDropDown() {
-//     document.getElementById("imgDrop").classList.toggle("show");
-// }
-//
-// // Close the dropdown menu if the user clicks outside of it
-// window.onclick = function(e) {
-//   e.preventDefault()
-//   if (!e.target.matches('.dropbtn')) {
-//
-//     let dropdowns = document.getElementsByClassName("dropdown-content");
-//     let i;
-//     for (i = 0; i < dropdowns.length; i++) {
-//       let openDropdown = dropdowns[i];
-//       if (openDropdown.classList.contains('show')) {
-//         openDropdown.classList.remove('show');
-//       }
-//     }
-//   }
-// }
-
-
-
-// function makeAMeme(){
-//   let songOne = getSongDropDown().querySelector("#mp3-1")
-//   songOne.addEventListener("click", function(e){
-//     let songOneId = e.currentTarget.id.split("-")[1]
-//   })
-//
-//   let songTwo = getSongDropDown().querySelector("#mp3-2")
-//   songTwo.addEventListener("click", function(e){
-//       let songTwoId = e.currentTarget.id.split("-")[1]
-//     })
-//
-//   let songThree = getSongDropDown().querySelector("#mp3-3")
-//   songThree.addEventListener("click", function(e){
-//         let songThreeId = e.currentTarget.id.split("-")[1]
-//       })
-//
-//
-//     let imgOne = getImgDropDown().querySelector("#img-1")
-//     imgOne.addEventListener("click", function(e){
-//         let imgOneId = e.currentTarget.id.split("-")[1]
-//     })
-//
-//     let imgTwo = getImgDropDown().querySelector("#img-2")
-//     imgTwo.addEventListener("click", function(e){
-//         let imgTwoId = e.currentTarget.id.split("-")[1]
-//       })
-//
-//     let imgThree = getImgDropDown().querySelector("#img-3")
-//     imgThree.addEventListener("click", function(e){
-//         let imgThreeId = e.currentTarget.id.split("-")[1]
-//         })
-// }
-
+}
 
 
 // function postMemeFetch(){
