@@ -4,6 +4,14 @@ document.addEventListener('DOMContentLoaded', function() {
   fetchMemes()
 })
 
+function getSongDropDown(){
+  return document.querySelector("#songDrop")
+}
+
+function getImgDropDown(){
+  return document.querySelector("#imgDrop")
+}
+
 function fetchMemes() {
   fetch('http://localhost:3000/memes')
   .then(res => res.json())
@@ -22,8 +30,12 @@ function deleteMeme(e){
     console.log(e.currentTarget.id)
 }
 
-function dropDown() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function songDropDown() {
+    document.getElementById("songDrop").classList.toggle("show");
+}
+
+function imgDropDown() {
+    document.getElementById("imgDrop").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -41,3 +53,26 @@ window.onclick = function(e) {
     }
   }
 }
+
+function songDropEvents(){
+  songChoice = getSongDropDown().value;
+  alert("You choice" + songChoice)
+  // debugger
+  // let songOne = getSongDropDown().querySelector("#mp3-1")
+  //
+  // songOne.addEventListener("change", function(){
+  //   console.log("clicked song 1")
+  // })
+  //
+  // let songTwo = getSongDropDown().querySelector("#mp3-2")
+  //
+  // songTwo.addEventListener("click", function(){
+  //     console.log("clicked song 2")
+  //   })
+  //
+  // let songThree = getSongDropDown().querySelector("#mp3-3")
+  //
+  // songThree.addEventListener("click", function(){
+  //       console.log("clicked song 3")
+  //     })
+  }

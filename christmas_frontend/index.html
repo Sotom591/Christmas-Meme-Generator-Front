@@ -20,14 +20,25 @@
     <form class="add-meme-form" style="">
     <h3>Make a meme!</h3>
     <div class="MakeMeme">
+
       <div class="dropdown">
-        <button onclick="dropDown()" class="dropbtn">Dropdown</button>
-        <div id="myDropdown" class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+        <button onclick="imgDropDown()" class="dropbtn">Select An Image</button>
+        <div id="imgDrop" class="dropdown-content">
+          <a href="#" id="img-1">Creepy Guy</a>
+          <a href="#" id="img-2">Screaming Kevin</a>
+          <a href="#" id="img-3">Excited Elf</a>
         </div>
-    </div><br>
+    </div>
+
+    <div class="dropdown" id="songs">
+      <button onclick="songDropDown()" class="dropbtn">Select A Song</button>
+      <div id="songDrop" onchange="songDropEvents()" class="dropdown-content">
+        <a href="#" value="mp3-1" id="mp3-1" >Baby It's Cold Outside</a>
+        <a href="#" id="mp3-2">White Christmas</a>
+        <a href="#" id="mp3-3">Santa Claus is Coming to Town</a>
+      </div>
+    </div>
+      <br>
         <input type="text" name="name" value="" placeholder="Enter a meme's name..." class="input-text">
         <br>
         <input type="text" name="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
@@ -35,7 +46,6 @@
         <input type="text" name="buttom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
         <br>
         <button type="submit" name="submit" value="Make New Meme" class="submit">Make New Meme</button>
-
     </div>
 
     </form>
