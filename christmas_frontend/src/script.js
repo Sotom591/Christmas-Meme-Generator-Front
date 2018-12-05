@@ -17,15 +17,69 @@ function getImgDropDown(){
   return document.querySelector("#imgDrop")
 }
 
+function renderMeme(meme){
+ let name = document.createElement('div')
+ name.id = "meme-name"
+ name.innerText = meme.name
+
+ let image = document.createElement('img')
+ image.id = 'meme-image'
+ image.className = 'meme-img'
+ image.src = meme.image.url
+
+ let input1 = document.createElement('h2')
+ input1.id = 'top-center'
+ input1.innerText = meme.input1
+
+ let input2 = document.createElement('h2')
+ input2.id = 'bottom-center'
+ input2.innerText = meme.input2
+
+ let editBtn = document.createElement('button')
+ editBtn.id = `edit-${meme.id}`
+ editBtn.innerText = 'Edit Meme'
+ editBtn.addEventListener("click", editMeme)
+
+
+ let deleteBtn = document.createElement('button')
+ deleteBtn.id = `delete-${meme.id}`
+ deleteBtn.innerText = 'Delete Meme'
+ deleteBtn.addEventListener("click", deleteMeme)
+
+
+ let memeDiv = document.querySelector('#meme-container')
+
+ let imageDiv = document.createElement('div')
+ imageDiv.id = "image-container"
+ // imageDiv.style.backgroundImage = `url(${meme.image.url})`
+
+ let cardDiv = document.createElement('div')
+ cardDiv.id = "card-container"
+ cardDiv.className = "card"
+
+ cardDiv.appendChild(imageDiv)
+ cardDiv.appendChild(name)
+ cardDiv.appendChild(editBtn)
+ cardDiv.appendChild(deleteBtn)
+
+ imageDiv.appendChild(image)
+ imageDiv.appendChild(input1)
+ imageDiv.appendChild(input2)
+ memeDiv.appendChild(cardDiv)
+}
+
+
+
 function fetchMemes() {
   fetch('http://localhost:3000/memes')
   .then(res => res.json())
   .then(data =>
       data.forEach(meme => {
-        let memeInstance = new Meme(meme.id, meme.name, meme.input1, meme.input2, meme.mp3, meme.image)
-        memeInstance.renderMeme()
+        // let memeInstance = new Meme(meme.id, meme.name, meme.input1, meme.input2, meme.mp3, meme.image)
+      renderMeme(meme)
       })
   )}
+
 function getForm(){
   return document.querySelector(".add-meme-form")
 }
@@ -63,14 +117,16 @@ function makeAMeme(e){
 
 function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
 
-  // console.log(songChoice, imgChoice, nameInput, topInput, bottomInput)
-  data = {
+  let data = {
     name: nameInput,
     input1: topInput,
     input2: bottomInput,
-    image: {url: imgChoice},
-    mp3: {audio: songChoice}
+    image_id: imgChoice,
+    mp3_id: songChoice
   }
+
+  // let createdMemeInstance = new Meme(data)
+  // createdMemeInstance.renderMeme()
 
   fetch('http://localhost:3000/memes', {
     method: "POST",
@@ -82,5 +138,7 @@ function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
     body: JSON.stringify(data)
 })
   .then(res => res.json())
-  .then(postData => console.log(postData))
+  .then(postData => {
+    renderMeme(postData)
+  })
 }
