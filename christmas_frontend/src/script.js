@@ -54,7 +54,7 @@ function renderMeme(meme){
  // imageDiv.style.backgroundImage = `url(${meme.image.url})`
 
  let cardDiv = document.createElement('div')
- cardDiv.id = "card-container"
+ cardDiv.id = `card-container-${meme.id}`
  cardDiv.className = "card"
 
  cardDiv.appendChild(imageDiv)
@@ -89,7 +89,13 @@ function editMeme(e){
 }
 
 function deleteMeme(e){
-    console.log(e.currentTarget.id)
+    let id = e.currentTarget.id.split('-')[1]
+    fetch(`http://localhost:3000/memes/${id}`, {
+      method: 'DELETE'
+    }).then(res => res.json())
+    .then(() => {
+      document.querySelector(`#card-container-${id}`).remove()
+    })
 }
 
 //
@@ -124,9 +130,6 @@ function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
     image_id: imgChoice,
     mp3_id: songChoice
   }
-
-  // let createdMemeInstance = new Meme(data)
-  // createdMemeInstance.renderMeme()
 
   fetch('http://localhost:3000/memes', {
     method: "POST",
