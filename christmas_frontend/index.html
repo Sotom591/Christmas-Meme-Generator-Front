@@ -21,7 +21,27 @@
     <h3>Make a meme!</h3>
     <div class="MakeMeme">
 
-      <div class="dropdown">
+
+      <form>
+        Choose which song you prefer:
+  <select id="songs" onchange="preferedSong()">
+    <option value="Baby">Baby It's Cold Outside</option>
+    <option value="White">White Christmas</option>
+    <option value="Santa">Santa Claus is Coming to Town</option>
+  </select>
+    </form>
+
+    <form>
+      Choose which image you prefer:
+<select id="imgs" onchange="preferedImg()">
+  <option value="Creepy">Creepy Guy</option>
+  <option value="Kevin">Screaming Kevin</option>
+  <option value="Elf">Excited Elf</option>
+</select>
+  </form>
+
+
+      <!-- <div class="dropdown">
         <button onclick="imgDropDown()" class="dropbtn">Select An Image</button>
         <div id="imgDrop" class="dropdown-content">
           <a href="#" id="img-1">Creepy Guy</a>
@@ -33,17 +53,17 @@
     <div class="dropdown">
       <button onclick="songDropDown()" class="dropbtn">Select A Song</button>
       <div id="songDrop" class="dropdown-content">
-        <a href="#" id="mp3-1" >Baby It's Cold Outside</a>
+        <a href="#" id="mp3-1">Baby It's Cold Outside</a>
         <a href="#" id="mp3-2">White Christmas</a>
         <a href="#" id="mp3-3">Santa Claus is Coming to Town</a>
       </div>
     </div>
-      <br>
-        <input type="text" name="name" value="" placeholder="Enter a meme's name..." class="input-text">
+      <br> -->
+        <input type="text" id="name" value="" placeholder="Enter a meme's name..." class="input-text">
         <br>
-        <input type="text" name="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
+        <input type="text" id="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
         <br>
-        <input type="text" name="buttom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
+        <input type="text" id="buttom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
         <br>
         <button type="submit" name="submit" value="Make New Meme" class="submit">Make New Meme</button>
     </div>
