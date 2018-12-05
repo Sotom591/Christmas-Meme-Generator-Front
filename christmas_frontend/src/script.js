@@ -45,9 +45,11 @@ function renderMeme(meme){
  input2.innerText = meme.input2
 
  let memeDiv = document.querySelector('#meme-container')
+ memeDiv.className = "ui three stackable cards"
 
  let imageDiv = document.createElement('div')
  imageDiv.id = "image-container"
+ imageDiv.className = "image"
  // imageDiv.style.backgroundImage = `url(${meme.image.url})`
 
  let cardDiv = document.createElement('div')
