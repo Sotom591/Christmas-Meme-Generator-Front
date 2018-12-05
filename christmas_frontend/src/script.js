@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     makeAMeme(e)
   })
 })
+function getForm(){
+  return document.querySelector(".add-meme-form")
+}
 
 function getSongDropDown(){
   return document.querySelector("#songDrop")
@@ -56,6 +59,7 @@ function renderMeme(meme){
  let cardDiv = document.createElement('div')
  cardDiv.id = `card-container-${meme.id}`
  cardDiv.className = "card"
+ cardDiv.addEventListener('click', showMeme)
 
  cardDiv.appendChild(imageDiv)
  cardDiv.appendChild(name)
@@ -80,10 +84,42 @@ function fetchMemes() {
       })
   )}
 
-function getForm(){
-  return document.querySelector(".add-meme-form")
+function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
+
+    let data = {
+      name: nameInput,
+      input1: topInput,
+      input2: bottomInput,
+      image_id: imgChoice,
+      mp3_id: songChoice
+    }
+
+    fetch('http://localhost:3000/memes', {
+      method: "POST",
+      headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json"
+
+    },
+      body: JSON.stringify(data)
+  })
+    .then(res => res.json())
+    .then(postData => {
+      renderMeme(postData)
+    })
 }
 
+function makeAMeme(e){
+
+  let songChoice = document.querySelector("#songs").value
+  let imgChoice = document.querySelector("#imgs").value
+  let nameInput = document.querySelector("#name").value
+  let topInput = document.querySelector("#top-text").value
+  let bottomInput = document.querySelector("#bottom-text").value
+
+
+  postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput)
+}
 function editMeme(e){
       console.log(e.currentTarget.id)
 }
@@ -98,50 +134,14 @@ function deleteMeme(e){
     })
 }
 
-//
-// function prefered(){
-// songChoice = document.forms[0].songs.value;
-// console.log(songChoice)
-//
-// imgChoice = document.forms[1].imgs.value;
-//     console.log(imgChoice)
-//
-// }
-
-function makeAMeme(e){
-
-  let songChoice = document.querySelector("#songs").value
-  let imgChoice = document.querySelector("#imgs").value
-  let nameInput = document.querySelector("#name").value
-  let topInput = document.querySelector("#top-text").value
-  let bottomInput = document.querySelector("#bottom-text").value
-
-
-  postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput)
-}
-
-
-function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
-
-  let data = {
-    name: nameInput,
-    input1: topInput,
-    input2: bottomInput,
-    image_id: imgChoice,
-    mp3_id: songChoice
-  }
-
-  fetch('http://localhost:3000/memes', {
-    method: "POST",
-    headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-
-  },
-    body: JSON.stringify(data)
-})
-  .then(res => res.json())
-  .then(postData => {
-    renderMeme(postData)
-  })
+function showMeme(e){
+  //on click of card, only shows that card
+// debugger
+  let id = e.currentTarget.id.split('-')[2]
+  let container = document.querySelector(`#meme-container`)
+  let memeForm = document.querySelector(`.add-meme-form`)
+  let cardContainer = document.querySelector(`#card-container-${id}`)
+  container.innerHTML = ''
+  memeForm.innerHTML = ''
+  container.appendChild(cardContainer)
 }
