@@ -1,7 +1,10 @@
 //fetching and DOM content manipulation
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('loaded')
   fetchMemes()
+
+  let header = document.querySelector("h1")
+  header.addEventListener("click", function(){
+    rerenderMemes()})
 
   getForm().addEventListener("submit", function(e){
     e.preventDefault()
@@ -38,18 +41,6 @@ function renderMeme(meme){
  input2.id = 'bottom-center'
  input2.innerText = meme.input2
 
- let editBtn = document.createElement('button')
- editBtn.id = `edit-${meme.id}`
- editBtn.innerText = 'Edit Meme'
- editBtn.addEventListener("click", editMeme)
-
-
- let deleteBtn = document.createElement('button')
- deleteBtn.id = `delete-${meme.id}`
- deleteBtn.innerText = 'Delete Meme'
- deleteBtn.addEventListener("click", deleteMeme)
-
-
  let memeDiv = document.querySelector('#meme-container')
 
  let imageDiv = document.createElement('div')
@@ -59,12 +50,11 @@ function renderMeme(meme){
  let cardDiv = document.createElement('div')
  cardDiv.id = `card-container-${meme.id}`
  cardDiv.className = "card"
- cardDiv.addEventListener('click', showMeme)
+ cardDiv.addEventListener('click', showOneMeme)
 
  cardDiv.appendChild(imageDiv)
  cardDiv.appendChild(name)
- cardDiv.appendChild(editBtn)
- cardDiv.appendChild(deleteBtn)
+
 
  imageDiv.appendChild(image)
  imageDiv.appendChild(input1)
@@ -134,7 +124,7 @@ function deleteMeme(e){
     })
 }
 
-function showMeme(e){
+function showOneMeme(e){
   //on click of card, only shows that card
 // debugger
   let id = e.currentTarget.id.split('-')[2]
@@ -144,4 +134,66 @@ function showMeme(e){
   container.innerHTML = ''
   memeForm.innerHTML = ''
   container.appendChild(cardContainer)
+
+  let editBtn = document.createElement('button')
+  editBtn.id = `edit-${id}`
+  editBtn.innerText = 'Edit Meme'
+  editBtn.addEventListener("click", editMeme)
+
+
+  let deleteBtn = document.createElement('button')
+  deleteBtn.id = `delete-${id}`
+  deleteBtn.innerText = 'Delete Meme'
+  deleteBtn.addEventListener("click", deleteMeme)
+  cardContainer.appendChild(editBtn)
+  cardContainer.appendChild(deleteBtn)
+}
+
+function rerenderMemes(){
+
+  let container = document.querySelector(`#meme-container`)
+  container.innerHTML = ''
+
+  fetchMemes()
+
+  let formDiv = document.querySelector(`.add-meme-form`)
+
+  formDiv.innerHTML = formHTML()
+
+}
+
+function formHTML(){
+  return `<form class="add-meme-form" style="">
+  <h3>Make a meme!</h3>
+  <div class="MakeMeme">
+
+
+    <form>
+      Choose which song you prefer:
+<select id="songs">
+  <option value="1">Baby It's Cold Outside</option>
+  <option value="2">White Christmas</option>
+  <option value="3">Santa Claus is Coming to Town</option>
+</select>
+  </form>
+
+  <form>
+    Choose which image you prefer:
+<select id="imgs">
+<option value="1">Creepy Guy</option>
+<option value="2">Screaming Kevin</option>
+<option value="3">Excited Elf</option>
+</select>
+</form>
+
+      <input type="text" id="name" value="" placeholder="Enter a meme's name..." class="input-text">
+      <br>
+      <input type="text" id="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
+      <br>
+      <input type="text" id="bottom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
+      <br>
+      <button type="submit" name="submit" value="Make New Meme" class="submit">Make New Meme</button>
+  </div>
+
+  </form>`
 }
