@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
   getForm().addEventListener("submit", function(e){
     e.preventDefault()
     makeAMeme(e)
+
+
   })
 })
 function getForm(){
@@ -24,6 +26,7 @@ function getImgDropDown(){
 }
 
 function renderMeme(meme){
+
  let name = document.createElement('div')
  name.id = "meme-name"
  name.innerText = meme.name
@@ -50,7 +53,8 @@ function renderMeme(meme){
  let cardDiv = document.createElement('div')
  cardDiv.id = `card-container-${meme.id}`
  cardDiv.className = "card"
- cardDiv.addEventListener('click', showOneMeme)
+ cardDiv.addEventListener('click', function(e)
+  {showOneMeme(e, meme)})
 
  cardDiv.appendChild(imageDiv)
  cardDiv.appendChild(name)
@@ -121,12 +125,13 @@ function deleteMeme(e){
     }).then(res => res.json())
     .then(() => {
       document.querySelector(`#card-container-${id}`).remove()
+      rerenderMemes()
     })
 }
 
-function showOneMeme(e){
+function showOneMeme(e, meme){
   //on click of card, only shows that card
-// debugger
+
   let id = e.currentTarget.id.split('-')[2]
   let container = document.querySelector(`#meme-container`)
   let memeForm = document.querySelector(`.add-meme-form`)
@@ -135,18 +140,25 @@ function showOneMeme(e){
   memeForm.innerHTML = ''
   container.appendChild(cardContainer)
 
-  let editBtn = document.createElement('button')
-  editBtn.id = `edit-${id}`
-  editBtn.innerText = 'Edit Meme'
-  editBtn.addEventListener("click", editMeme)
-
 
   let deleteBtn = document.createElement('button')
   deleteBtn.id = `delete-${id}`
   deleteBtn.innerText = 'Delete Meme'
   deleteBtn.addEventListener("click", deleteMeme)
-  cardContainer.appendChild(editBtn)
   cardContainer.appendChild(deleteBtn)
+
+
+  let songController = document.querySelector("#song-div")
+    songController.innerHTML = song()
+
+
+
+}
+
+function song(){
+  return   `<audio controls autoplay>
+    <source src="https://ia601502.us.archive.org/1/items/Im_Giving_You_My_Cold_For_Christmas-19520/Lee_Rosevere_-_01_-_Im_Giving_You_My_Cold_For_Christmas.mp3" type="audio/mpeg">
+  </audio>`
 }
 
 function rerenderMemes(){
@@ -159,6 +171,8 @@ function rerenderMemes(){
   let formDiv = document.querySelector(`.add-meme-form`)
 
   formDiv.innerHTML = formHTML()
+  let songController = document.querySelector("#song-div")
+  songController.innerHTML = ''
 
 }
 
