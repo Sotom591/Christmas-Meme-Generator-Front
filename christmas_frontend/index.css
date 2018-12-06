@@ -1,21 +1,26 @@
-body {background-image: url(https://media.giphy.com/media/t7qcShsBIsP1S/giphy.gif);
-
-    background-size: 100%;
+body {
+  background-image: url(https://media.giphy.com/media/t7qcShsBIsP1S/giphy.gif);
+  background-size: 100%;
 }
+
  h1 {
-   font-family: cursive;
-   padding: 50px;
-  position: fixed;
+  font-family: cursive;
+  /* padding: 50px; */
   z-index: 1;
   text-align: center;
-  background-color: red;
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  font-size: 8rem;
+  margin-top: -10%;
   /* padding-left: 200px; */
  }
+
 .meme-img {
   justify-self: center;
   height: 12rem;
   width: auto;
-
+  overflow: hidden;
 }
 
 button {
@@ -39,6 +44,7 @@ button:hover {
 
 .form-title {
     font-family: cursive;
+    font-size: 30px
 }
 #songs {
       font-size: medium;
@@ -55,14 +61,48 @@ button:hover {
   margin: 3px;
 }
 .add-meme-form {
-font-size: x-large;
-padding: 20px;
-position: absolute;
-right: 33%;
-text-align: center;
-font-family: cursive;
-background-color: white;
-border-radius: 3%;
-height: 44%;
-margin-top: 1%;
+  font-size: x-large;
+  padding: 20px;
+  position: absolute;
+  right: 33%;
+  text-align: center;
+  font-family: cursive;
+  background-color: white;
+  border-radius: 3%;
+  height: 53%;
+  margin-top: 1%;
 }
+
+#meme-container {
+  margin: 26px 61px 61px 61px;
+}
+#top-center {
+letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 40px;
+    color: white;
+    margin-top: -475px;
+    align: center;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    font-family: impact;
+}
+
+#bottom-center {
+  color: wheat;
+  padding: 0px;
+  margin: 12rem 0rem;
+  text-align: center;
+  text-shadow: 2px 2px black;
+  font-family: impact;
+  text-transform: uppercase;
+  font-size: 40px;
+  color: white;
+}
+
+/* #meme-name{
+  font-size: x-large;
+  text-align: center;
+  margin: -4rem;
+  color: green;
+} */
