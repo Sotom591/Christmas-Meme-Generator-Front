@@ -13,16 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   })
 })
+
 function getForm(){
   return document.querySelector(".add-meme-form")
-}
-
-function getSongDropDown(){
-  return document.querySelector("#songDrop")
-}
-
-function getImgDropDown(){
-  return document.querySelector("#imgDrop")
 }
 
 function renderMeme(meme){
@@ -116,9 +109,7 @@ function makeAMeme(e){
 
   postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput)
 }
-function editMeme(e){
-      console.log(e.currentTarget.id)
-}
+
 
 function deleteMeme(e){
     let id = e.currentTarget.id.split('-')[1]
@@ -151,15 +142,15 @@ function showOneMeme(e, meme){
 
 
   let songController = document.querySelector("#song-div")
-    songController.innerHTML = song()
+    songController.innerHTML = song(meme)
 
 
 
 }
 
-function song(){
+function song(meme){
   return   `<audio controls autoplay>
-    <source src="https://ia601502.us.archive.org/1/items/Im_Giving_You_My_Cold_For_Christmas-19520/Lee_Rosevere_-_01_-_Im_Giving_You_My_Cold_For_Christmas.mp3" type="audio/mpeg">
+    <source src="${meme.mp3.audio}" type="audio/mpeg">
   </audio>`
 }
 
@@ -186,20 +177,22 @@ function formHTML(){
 
     <form>
       Choose which song you prefer:
-<select id="songs">
-  <option value="1">Baby It's Cold Outside</option>
-  <option value="2">White Christmas</option>
-  <option value="3">Santa Claus is Coming to Town</option>
-</select>
+      <select id="songs">
+        <option value="1">It's Christmas, Christmas Time</option>
+        <option value="2">Feliz Navidad</option>
+        <option value="3">I'm Giving You My Cold For Christmas</option>
+      </select>
   </form>
 
   <form>
     Choose which image you prefer:
-<select id="imgs">
-<option value="1">Creepy Guy</option>
-<option value="2">Screaming Kevin</option>
-<option value="3">Excited Elf</option>
-</select>
+    <select id="imgs">
+      <option value="1">Creepy Guy</option>
+      <option value="2">Grumpy Cat</option>
+      <option value="3">Forever Alone</option>
+      <option value="4">Smiley Grinch</option>
+      <option value="5">Ugly Sweater John</option>
+    </select>
 </form>
 
       <input type="text" id="name" value="" placeholder="Enter a meme's name..." class="input-text">
