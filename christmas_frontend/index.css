@@ -42,6 +42,11 @@ button {
   right: -38%;
 }
 
+.like-btn {
+  margin-top: 8px;
+  right: -20%;
+}
+
 button:hover {
   background-color: green;
   border: #e04b52 solid 1px;

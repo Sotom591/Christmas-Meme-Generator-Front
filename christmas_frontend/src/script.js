@@ -19,7 +19,6 @@ function getForm(){
 }
 
 function renderMeme(meme){
-
  let name = document.createElement('div')
  name.id = "meme-name"
  name.innerText = meme.name
@@ -64,8 +63,8 @@ function renderMeme(meme){
 }
 
 
-
 function fetchMemes() {
+  // debugger
   fetch('http://localhost:3000/memes')
   .then(res => res.json())
   .then(data =>
@@ -108,7 +107,6 @@ function makeAMeme(e){
   let topInput = document.querySelector("#top-text").value
   let bottomInput = document.querySelector("#bottom-text").value
 
-
   postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput)
 }
 
@@ -139,15 +137,49 @@ function showOneMeme(e, meme){
 
   let deleteBtn = document.createElement('button')
   deleteBtn.id = `delete-${id}`
-  deleteBtn.innerText = 'Delete Meme'
+  deleteBtn.innerText = 'H8 It'
   deleteBtn.addEventListener("click", deleteMeme)
   deleteBtn.className = "delete-btn"
   cardContainer.appendChild(deleteBtn)
+
+  let likeBtn = document.createElement('button')
+  likeBtn.id = `like-${id}`
+  likeBtn.innerText = `Luv It: ${meme.likes}`
+  likeBtn.addEventListener("click", function() {
+    addLikes(meme)
+  })
+  likeBtn.className = "like-btn"
+  likeBtn.dataset.likes = meme.likes
+  cardContainer.appendChild(likeBtn)
+
 
 
   let songController = document.querySelector("#song-div")
     songController.innerHTML = song(meme)
 
+}
+
+function addLikes(meme) {
+  // debugger
+  let id = meme.id
+  let newLikes = ++meme.likes
+
+  let likesData = {
+    likes: newLikes
+    }
+  fetch(`http://localhost:3000/memes/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+      // Accept: "application/json"
+    },
+    body: JSON.stringify(likesData)
+    })
+    .then(res => res.json())
+    .then(resData => {
+      let likeBtn = document.getElementById(`like-${id}`)
+      likeBtn.innerText = `Luv It: ${resData.likes}`
+  })
 }
 
 function song(meme){

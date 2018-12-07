@@ -1,10 +1,11 @@
 //meme js class info
 class Meme {
-  constructor(id, name, input1, input2, mp3, image) {
+  constructor(id, name, input1, input2, likes, mp3, image) {
     this.id = id,
     this.name = name,
     this.input1 = input1,
     this.input2 = input2,
+    this.likes = likes,
     this.mp3 = mp3,
     this.image = image
 
