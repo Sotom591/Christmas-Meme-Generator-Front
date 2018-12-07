@@ -81,7 +81,8 @@ function postMemeFetch(songChoice, imgChoice, nameInput, topInput, bottomInput){
       input1: topInput,
       input2: bottomInput,
       image_id: imgChoice,
-      mp3_id: songChoice
+      mp3_id: songChoice,
+      likes: 0
     }
 
     fetch('http://localhost:3000/memes', {
