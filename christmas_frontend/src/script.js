@@ -238,6 +238,11 @@ function formHTML(){
         <option value="3">Forever Alone</option>
         <option value="4">Smiley Grinch</option>
         <option value="5">Ugly Sweater John</option>
+        <option value="6">Dog Topples Tree</option>
+        <option value="7">Christmas Pepe</option>
+        <option value="8">Awkward Family Photo</option>
+        <option value="9">Buddy The Elf</option>
+
       </select>
     </form>
 <br>
