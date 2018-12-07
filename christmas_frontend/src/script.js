@@ -26,19 +26,21 @@ function renderMeme(meme){
 
  let image = document.createElement('img')
  image.id = 'meme-image'
- image.className = 'meme-img'
+ image.className = 'image'
  image.src = meme.image.url
 
  let input1 = document.createElement('h2')
  input1.id = 'top-center'
+ input1.className = 'top-center'
  input1.innerText = meme.input1
 
  let input2 = document.createElement('h2')
  input2.id = 'bottom-center'
+ input2.className = 'bottom-center'
  input2.innerText = meme.input2
 
  let memeDiv = document.querySelector('#meme-container')
- memeDiv.className = "ui three stackable cards"
+ memeDiv.className = "ui cards"
 
  let imageDiv = document.createElement('div')
  imageDiv.id = "image-container"
@@ -131,6 +133,7 @@ function showOneMeme(e, meme){
   let cardContainer = document.querySelector(`#card-container-${id}`)
   container.innerHTML = ''
   memeForm.innerHTML = ''
+  memeForm.style.visibility = "hidden"
   container.appendChild(cardContainer)
 
 
@@ -138,6 +141,7 @@ function showOneMeme(e, meme){
   deleteBtn.id = `delete-${id}`
   deleteBtn.innerText = 'Delete Meme'
   deleteBtn.addEventListener("click", deleteMeme)
+  deleteBtn.className = "delete-btn"
   cardContainer.appendChild(deleteBtn)
 
 
@@ -146,10 +150,11 @@ function showOneMeme(e, meme){
 
 
 
+
 }
 
 function song(meme){
-  return   `<audio controls autoplay>
+  return   `<audio controls autoplay style="visibility: hidden">
     <source src="${meme.mp3.audio}" type="audio/mpeg">
   </audio>`
 }
@@ -164,14 +169,18 @@ function rerenderMemes(){
   let formDiv = document.querySelector(`.add-meme-form`)
 
   formDiv.innerHTML = formHTML()
+  formDiv.style.visibility = "visible"
+
   let songController = document.querySelector("#song-div")
   songController.innerHTML = ''
 
 }
 
+
 function formHTML(){
   return `<form class="add-meme-form" style="">
-  <h3>Make a meme!</h3>
+  <div class="form-title">Make a Meme! </div>
+  <br>
   <div class="MakeMeme">
 
 
@@ -182,25 +191,25 @@ function formHTML(){
         <option value="2">Feliz Navidad</option>
         <option value="3">I'm Giving You My Cold For Christmas</option>
       </select>
-  </form>
-
-  <form>
-    Choose which image you prefer:
-    <select id="imgs">
-      <option value="1">Creepy Guy</option>
-      <option value="2">Grumpy Cat</option>
-      <option value="3">Forever Alone</option>
-      <option value="4">Smiley Grinch</option>
-      <option value="5">Ugly Sweater John</option>
-    </select>
-</form>
-
-      <input type="text" id="name" value="" placeholder="Enter a meme's name..." class="input-text">
-      <br>
-      <input type="text" id="top-text" value="" placeholder="Enter text to show at the top of your meme" class="input-text">
-      <br>
-      <input type="text" id="bottom-text" value="" placeholder="Enter text to show at the bottom of your meme." class="input-text">
-      <br>
+    </form>
+      <br><br>
+    <form>
+        Choose which image you prefer:
+      <select id="imgs">
+        <option value="1">Creepy Guy</option>
+        <option value="2">Grumpy Cat</option>
+        <option value="3">Forever Alone</option>
+        <option value="4">Smiley Grinch</option>
+        <option value="5">Ugly Sweater John</option>
+      </select>
+    </form>
+<br>
+      <input type="text" id="name" value="" placeholder="Enter a name for your meme" class="input-text">
+      <br><br>
+      <input type="text" id="top-text" value="" placeholder="Enter text for the top of your meme" class="input-text">
+      <br><br>
+      <input type="text" id="bottom-text" value="" placeholder="Enter text for the bottom of your meme" class="input-text">
+      <br><br>
       <button type="submit" name="submit" value="Make New Meme" class="submit">Make New Meme</button>
   </div>
 

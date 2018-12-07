@@ -16,12 +16,12 @@ body {
   /* padding-left: 200px; */
  }
 
-.meme-img {
+/* .meme-img {
   justify-self: center;
   height: 12rem;
   width: auto;
   overflow: hidden;
-}
+} */
 
 button {
   position: relative;
@@ -34,6 +34,12 @@ button {
   font-size: 18px;
   font-family: cursive;
   justify-self: center;
+
+}
+
+.delete-btn {
+  margin: inherit;
+  right: -38%;
 }
 
 button:hover {
@@ -46,11 +52,16 @@ button:hover {
     font-family: cursive;
     font-size: 30px
 }
+
 #songs {
-      font-size: medium;
+    background-color: red;
+    color: white;
+    font-size: medium;
 }
 #imgs {
-      font-size: medium;
+  background-color: green;
+  color: white;
+  font-size: medium;
 }
 .input-text {
   border-radius: 5px;
@@ -76,22 +87,23 @@ button:hover {
 #meme-container {
   margin: 26px 61px 61px 61px;
 }
-#top-center {
-letter-spacing: 2px;
+
+
+.image>.top-center {
+    align-self: start;
+    letter-spacing: 2px;
     text-transform: uppercase;
     font-size: 40px;
     color: white;
-    margin-top: -475px;
-    align: center;
     text-align: center;
     text-shadow: 2px 2px black;
     font-family: impact;
 }
 
-#bottom-center {
+.image>.bottom-center {
+  align-self: end;
   color: wheat;
   padding: 0px;
-  margin: 12rem 0rem;
   text-align: center;
   text-shadow: 2px 2px black;
   font-family: impact;
@@ -100,6 +112,26 @@ letter-spacing: 2px;
   color: white;
 }
 
+.ui.cards>.card {
+  overflow: hidden;
+  margin: 30px 93px 46px 51px;
+  width: 450px;
+  height: 450px;
+}
+
+.ui.cards>.card>.image {
+  overflow: hidden;
+  width: 450px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: 1% 50% 45%;
+}
+#meme-name {
+  text-align: center;
+  font-size: large;
+  font-family: cursive;
+  margin-top: 2%;
+}
 /* #meme-name{
   font-size: x-large;
   text-align: center;
