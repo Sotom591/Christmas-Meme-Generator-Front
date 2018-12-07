@@ -149,7 +149,7 @@ function showOneMeme(e, meme){
     songController.innerHTML = song(meme)
 
 
-
+    cardContainer.style.right = "-597px";
 
 }
 
