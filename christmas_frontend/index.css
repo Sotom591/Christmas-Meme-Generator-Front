@@ -5,7 +5,7 @@ body {
 
  h1 {
   font-family: cursive;
-  /* padding: 50px; */
+
   z-index: 1;
   text-align: center;
   color: white;
@@ -13,15 +13,10 @@ body {
   width: 100%;
   font-size: 8rem;
   margin-top: -10%;
-  /* padding-left: 200px; */
+
  }
 
-/* .meme-img {
-  justify-self: center;
-  height: 12rem;
-  width: auto;
-  overflow: hidden;
-} */
+
 
 button {
   position: relative;
@@ -38,13 +33,17 @@ button {
 }
 
 .delete-btn {
-  margin-top: 8px;
-  right: -38%;
+  margin-top: 1px;
+  right: -65%;
 }
 
 .like-btn {
-  margin-top: 8px;
+  margin-top: -26px;
   right: -20%;
+}
+
+ui.card>:last-child, .ui.cards>.card>:last-child {
+    border-radius: 8px !important;
 }
 
 button:hover {

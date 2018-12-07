@@ -112,6 +112,7 @@ function makeAMeme(e){
 
 
 function deleteMeme(e){
+
     let id = e.currentTarget.id.split('-')[1]
     fetch(`http://localhost:3000/memes/${id}`, {
       method: 'DELETE'
@@ -125,9 +126,15 @@ function deleteMeme(e){
 function showOneMeme(e, meme){
   //on click of card, only shows that card
 
+  let cardDiv = document.querySelector(`card-container-${meme.id}`)
+  if (e.target.className != "like-btn" && e.target.className != "delete-btn"){
+
+
   let id = e.currentTarget.id.split('-')[2]
   let container = document.querySelector(`#meme-container`)
   let memeForm = document.querySelector(`.add-meme-form`)
+
+
   let cardContainer = document.querySelector(`#card-container-${id}`)
   container.innerHTML = ''
   memeForm.innerHTML = ''
@@ -156,7 +163,7 @@ function showOneMeme(e, meme){
 
   let songController = document.querySelector("#song-div")
     songController.innerHTML = song(meme)
-
+}
 }
 
 function addLikes(meme) {
