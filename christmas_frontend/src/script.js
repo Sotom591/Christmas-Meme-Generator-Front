@@ -148,9 +148,6 @@ function showOneMeme(e, meme){
   let songController = document.querySelector("#song-div")
     songController.innerHTML = song(meme)
 
-
-    cardContainer.style.right = "-597px";
-
 }
 
 function song(meme){
